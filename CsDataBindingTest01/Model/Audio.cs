@@ -4,13 +4,13 @@ using System.Diagnostics;
 
 public class Audio: INotifyPropertyChanged
 {
-    private double volume;
+    private double m_volume;
     public double Volume
     {
-        get { return volume; }
+        get { return m_volume; }
         set
         {
-            volume = value;
+            m_volume = value;
             // Call OnPropertyChanged whenever the property is updated
             OnPropertyChanged("Volume");
             //

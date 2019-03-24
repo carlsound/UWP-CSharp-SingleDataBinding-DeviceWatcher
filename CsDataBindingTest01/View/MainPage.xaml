@@ -1,0 +1,46 @@
+﻿<Page
+    x:Class="CsDataBindingTest01.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CsDataBindingTest01"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <StackPanel RequestedTheme="Dark" VerticalAlignment="Center">
+        <Slider x:Name="volumeSlider" Maximum="100" Value="{x:Bind ViewModel.Audio.Volume, Mode=TwoWay}"/>
+        <Slider x:Name="volumeSlider2" Maximum="100" Value="{x:Bind ViewModel.Audio.Volume, Mode=TwoWay}"/>
+
+        <TextBlock Text="Volume:" TextWrapping="Wrap" TextAlignment="Center"/>
+        <TextBlock x:Name="volumeTextBlock" TextWrapping="Wrap" Text="{x:Bind ViewModel.Audio.Volume, Mode=OneWay}" TextAlignment="Center"/>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+
+          <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                <TextBlock Text="Select an audio input device:" TextWrapping="Wrap" TextAlignment="Center"/>
+            <ListBox x:Name="audioInputDevicesDynamicListBox" Height="216" VerticalAlignment="Top" Width="350" ItemsSource="{x:Bind ViewModel.AudioInputWatcher.DeviceInformationList, Mode=OneWay}" DisplayMemberPath="Name"/>
+          </StackPanel>
+
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                <TextBlock Text="Select an audio output device:" TextWrapping="Wrap" TextAlignment="Center"/>
+                <ListBox x:Name="audioOutputDevicesDynamicListBox" Height="216" VerticalAlignment="Top" Width="350" ItemsSource="{x:Bind ViewModel.AudioOutputWatcher.DeviceInformationList, Mode=OneWay}" DisplayMemberPath="Name"/>
+            </StackPanel>
+            
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                <TextBlock Text="Select a MIDI input device:" TextWrapping="Wrap" TextAlignment="Center"/>
+                <ListBox x:Name="midiInputDevicesDynamicListBox" Height="216" VerticalAlignment="Top" Width="350" ItemsSource="{x:Bind ViewModel.MidiInputWatcher.DeviceInformationList, Mode=OneWay}" DisplayMemberPath="Name"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                <TextBlock Text="Select a MIDI output device:" TextWrapping="Wrap" TextAlignment="Center"/>
+                <ListBox x:Name="midiOutputDevicesDynamicListBox" Height="216" VerticalAlignment="Top" Width="350" ItemsSource="{x:Bind ViewModel.MidiOutputWatcher.DeviceInformationList, Mode=OneWay}" DisplayMemberPath="Name"/>
+            </StackPanel>
+            
+        </StackPanel>
+        
+    </StackPanel>
+</Page>
